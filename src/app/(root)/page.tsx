@@ -1,7 +1,14 @@
-import { Button } from "@/components/ui/button";
+'use client'
 
-export default function Home() {
-  return <main className="p-4">
-    <Button>Click!</Button>
-  </main>
+import { useModal } from '@/hooks/useModal'
+import { useEffect } from 'react'
+
+export default function SetupPage() {
+  const { isOpen, onOpen } = useModal()
+
+  useEffect(() => {
+    !isOpen && onOpen()
+  }, [isOpen, onOpen])
+  
+  return <main className="p-4"></main>
 }
