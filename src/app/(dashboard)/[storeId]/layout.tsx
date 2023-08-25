@@ -1,7 +1,8 @@
-import { db } from '@/lib/db'
+import { FC } from 'react'
 import { auth } from '@clerk/nextjs'
 import { redirect } from 'next/navigation'
-import { FC } from 'react'
+import { db } from '@/lib/db'
+import Navbar from '@/components/navbar/Navbar'
 
 interface layoutProps {
   children: React.ReactNode
@@ -28,7 +29,7 @@ const layout: FC<layoutProps> = async ({ children, params }) => {
 
   return (
     <>
-      <nav>this is a navbar</nav>
+      <Navbar />
       {children}
     </>
   )

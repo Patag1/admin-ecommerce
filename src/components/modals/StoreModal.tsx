@@ -43,7 +43,7 @@ const StoreModal: FC<StoreModalProps> = ({}) => {
     setLoading(true)
     try {
       const response = await axios.post('/api/store', values)
-      toast(<Toast text="Store created" />)
+      window.location.assign(`/${response.data.id}`)
     } catch (_error) {
       toast(<Toast text="Something went wrong" />)
     } finally {
