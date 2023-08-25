@@ -8,7 +8,7 @@ export async function POST(req: Request) {
     const { name } = await req.json()
 
     if (!userId) {
-      return new NextResponse('Unauthorized', { status: 401 })
+      return new NextResponse('Unauthenticated', { status: 401 })
     }
 
     if (!name) {
@@ -21,7 +21,8 @@ export async function POST(req: Request) {
         userId,
       },
     })
-
+    console.log(userId)
+    console.log(store)
     return NextResponse.json(store)
   } catch (error) {
     console.log('[STORES_POST]', error)

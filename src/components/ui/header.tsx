@@ -7,7 +7,7 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ title, desc }) => {
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex flex-col justify-between items-start">
       <h2 className="text-3xl font-bold tracking-tight">{title}</h2>
       <p className="text-sm text-muted-foreground">{desc}</p>
     </div>

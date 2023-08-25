@@ -70,6 +70,7 @@ const BillboardForm: FC<BillboardFormProps> = ({ initData }) => {
         await axios.post(`/api/${storeId}/billboards`, data)
       }
       router.refresh()
+      router.push(`/${storeId}/billboards`)
       toast(<Toast text={toastMessage} />)
     } catch (error) {
       toast(<Toast text="Something went wrong" />)
