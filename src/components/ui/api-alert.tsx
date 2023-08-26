@@ -5,8 +5,7 @@ import { Alert, AlertDescription, AlertTitle } from './alert'
 import { Copy, Server } from 'lucide-react'
 import { Badge, BadgeProps } from './badge'
 import { Button } from './button'
-import { toast } from 'sonner'
-import Toast from './toast'
+import { toast } from 'react-hot-toast'
 
 interface ApiAlertProps {
   title: string
@@ -27,7 +26,7 @@ const variantMap: Record<ApiAlertProps['variant'], BadgeProps['variant']> = {
 const ApiAlert: FC<ApiAlertProps> = ({ title, desc, variant = 'public' }) => {
   const onCopy = () => {
     navigator.clipboard.writeText(desc)
-    toast(<Toast text="API route copied to the clipboard" />)
+    toast('API route copied to clipboard')
   }
 
   return (

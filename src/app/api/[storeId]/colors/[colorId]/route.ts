@@ -4,29 +4,29 @@ import { NextResponse } from 'next/server'
 
 export async function GET(
   _req: Request,
-  { params }: { params: { bbId: string } }
+  { params }: { params: { colorId: string } }
 ) {
   try {
-    const { bbId } = params
+    const { colorId } = params
 
-    if (!bbId) {
-      return new NextResponse('Billboard not found', { status: 404 })
+    if (!colorId) {
+      return new NextResponse('Color not found', { status: 404 })
     }
 
-    const billboard = await db.billboard.findUnique({
-      where: { id: bbId },
+    const color = await db.color.findUnique({
+      where: { id: colorId },
     })
 
-    return NextResponse.json(billboard)
+    return NextResponse.json(color)
   } catch (error) {
-    console.log('[BILLBOARD_GET]: ', error)
+    console.log('[COLOR_GET]: ', error)
     return new NextResponse('Internal Error', { status: 500 })
   }
 }
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { storeId: string; bbId: string } }
+  { params }: { params: { storeId: string; colorId: string } }
 ) {
   try {
     const { userId } = auth()
@@ -35,24 +35,24 @@ export async function PATCH(
       return new NextResponse('Unauthenticated', { status: 401 })
     }
 
-    const { label, imageUrl } = await req.json()
+    const { name, value } = await req.json()
 
-    if (!label) {
-      return new NextResponse('Label is required', { status: 400 })
+    if (!name) {
+      return new NextResponse('Name is required', { status: 400 })
     }
 
-    if (!imageUrl) {
-      return new NextResponse('Image is required', { status: 400 })
+    if (!value) {
+      return new NextResponse('Value is required', { status: 400 })
     }
 
-    const { storeId, bbId } = params
+    const { storeId, colorId } = params
 
     if (!storeId) {
       return new NextResponse('Store not found', { status: 404 })
     }
 
-    if (!bbId) {
-      return new NextResponse('Billboard not found', { status: 404 })
+    if (!colorId) {
+      return new NextResponse('Color not found', { status: 404 })
     }
 
     const storeByUserId = await db.store.findFirst({
@@ -66,24 +66,24 @@ export async function PATCH(
       return new NextResponse('Unauthorized', { status: 403 })
     }
 
-    const billboard = await db.billboard.updateMany({
-      where: { id: bbId },
+    const color = await db.color.updateMany({
+      where: { id: colorId },
       data: {
-        label,
-        imageUrl,
+        name,
+        value,
       },
     })
 
-    return NextResponse.json(billboard)
+    return NextResponse.json(color)
   } catch (error) {
-    console.log('[BILLBOARD_PATCH]: ', error)
+    console.log('[COLOR_PATCH]: ', error)
     return new NextResponse('Internal Error', { status: 500 })
   }
 }
 
 export async function DELETE(
   _req: Request,
-  { params }: { params: { storeId: string; bbId: string } }
+  { params }: { params: { storeId: string; colorId: string } }
 ) {
   try {
     const { userId } = auth()
@@ -92,23 +92,23 @@ export async function DELETE(
       return new NextResponse('Unauthenticated', { status: 401 })
     }
 
-    const { storeId, bbId } = params
+    const { storeId, colorId } = params
 
     if (!storeId) {
       return new NextResponse('Store not found', { status: 404 })
     }
 
-    if (!bbId) {
-      return new NextResponse('Billboard not found', { status: 404 })
+    if (!colorId) {
+      return new NextResponse('Color not found', { status: 404 })
     }
 
-    const billboard = await db.billboard.deleteMany({
-      where: { id: bbId },
+    const color = await db.color.deleteMany({
+      where: { id: colorId },
     })
 
-    return NextResponse.json(billboard)
+    return NextResponse.json(color)
   } catch (error) {
-    console.log('[BILLBOARD_DELETE]: ', error)
+    console.log('[COLOR_DELETE]: ', error)
     return new NextResponse('Internal Error', { status: 500 })
   }
 }

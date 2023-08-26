@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { db } from '@/lib/db'
-import { BillboardColumn } from './components/columns'
+import { CategoryColumn } from './components/columns'
 import { format } from 'date-fns'
-import BillboardClient from './components/client'
+import CategoryClient from './components/client'
 
 interface pageProps {
   params: { storeId: string }
@@ -11,23 +11,25 @@ interface pageProps {
 const page: FC<pageProps> = async ({ params }) => {
   const { storeId } = params
 
-  const billboards = await db.billboard.findMany({
+  const categories = await db.category.findMany({
     where: { storeId },
+    include: { billboard: true },
     orderBy: {
       createdAt: 'desc',
     },
   })
 
-  const formattedBillboards: BillboardColumn[] = billboards.map((b) => ({
-    id: b.id,
-    label: b.label,
-    createdAt: format(b.createdAt, 'MMMM do, yyyy'),
+  const formattedCategories: CategoryColumn[] = categories.map((c) => ({
+    id: c.id,
+    name: c.name,
+    bbLabel: c.billboard.label,
+    createdAt: format(c.createdAt, 'MMMM do, yyyy'),
   }))
 
   return (
     <div className="flex flex-col">
       <div className="p-8 pt-6 flex-1 space-y-4">
-        <BillboardClient data={formattedBillboards} />
+        <CategoryClient data={formattedCategories} />
       </div>
     </div>
   )

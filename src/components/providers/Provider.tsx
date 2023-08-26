@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Toaster } from 'sonner'
+import { Toaster } from 'react-hot-toast'
 import ModalProvider from './ModalProvider'
 
 interface ProviderProps {
@@ -10,7 +10,7 @@ const Provider: FC<ProviderProps> = ({ children }) => {
   return (
     <>
       {children}
-      <Toaster position="bottom-center" />
+      <Toaster position="bottom-right" />
       <ModalProvider />
     </>
   )

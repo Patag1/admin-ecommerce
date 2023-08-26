@@ -17,8 +17,7 @@ import {
 } from '../ui/form'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
-import { toast } from 'sonner'
-import Toast from '../ui/toast'
+import { toast } from 'react-hot-toast'
 
 interface StoreModalProps {}
 
@@ -42,10 +41,10 @@ const StoreModal: FC<StoreModalProps> = ({}) => {
     if (loading) return
     setLoading(true)
     try {
-      const response = await axios.post('/api/store', values)
+      const response = await axios.post('/api/stores', values)
       window.location.assign(`/${response.data.id}`)
     } catch (_error) {
-      toast(<Toast text="Something went wrong" />)
+      toast('Something went wrong')
     } finally {
       setLoading(false)
     }

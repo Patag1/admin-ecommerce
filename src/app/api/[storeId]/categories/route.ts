@@ -13,13 +13,13 @@ export async function GET(
       return new NextResponse('Store not found', { status: 404 })
     }
 
-    const billboards = await db.billboard.findMany({
+    const categories = await db.category.findMany({
       where: { storeId },
     })
 
-    return NextResponse.json(billboards)
+    return NextResponse.json(categories)
   } catch (error) {
-    console.log('[BILLBOARDS_GET]: ', error)
+    console.log('[CATEGORIES_GET]: ', error)
     return new NextResponse('Internal Error', { status: 500 })
   }
 }
@@ -41,14 +41,14 @@ export async function POST(
       return new NextResponse('Store not found', { status: 404 })
     }
 
-    const { label, imageUrl } = await req.json()
+    const { name, bbId } = await req.json()
 
-    if (!label) {
-      return new NextResponse('Label is required', { status: 400 })
+    if (!name) {
+      return new NextResponse('Name is required', { status: 400 })
     }
 
-    if (!imageUrl) {
-      return new NextResponse('Image is required', { status: 400 })
+    if (!bbId) {
+      return new NextResponse('Billboard is required', { status: 400 })
     }
 
     const storeByUserId = await db.store.findFirst({
@@ -62,17 +62,17 @@ export async function POST(
       return new NextResponse('Unauthorized', { status: 403 })
     }
 
-    const billboard = await db.billboard.create({
+    const category = await db.category.create({
       data: {
-        label,
-        imageUrl,
+        name,
+        bbId,
         storeId,
       },
     })
 
-    return NextResponse.json(billboard)
+    return NextResponse.json(category)
   } catch (error) {
-    console.log('[BILLBOARDS_POST]: ', error)
+    console.log('[CATEGORIES_POST]: ', error)
     return new NextResponse('Internal Error', { status: 500 })
   }
 }

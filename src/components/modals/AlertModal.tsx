@@ -30,15 +30,16 @@ const AlertModal: FC<AlertModalProps> = ({
         desc="This action cannot be undone"
         isOpen={isOpen}
         onClose={onClose}
-      />
-      <div className="w-full pt-6 space-x-2 flex justify-end items-center">
-        <Button disabled={loading} variant="outline" onClick={onClose}>
-          Cancel
-        </Button>
-        <Button disabled={loading} variant="destructive" onClick={onConfirm}>
-          Confirm
-        </Button>
-      </div>
+      >
+        <div className="w-full pt-6 space-x-2 flex justify-end items-center">
+          <Button disabled={loading} variant="outline" onClick={onClose}>
+            Cancel
+          </Button>
+          <Button disabled={loading} variant="destructive" onClick={onConfirm}>
+            Confirm
+          </Button>
+        </div>
+      </Modal>
     </>
   )
 }

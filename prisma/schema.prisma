@@ -16,21 +16,70 @@ model Store {
   name   String
   userId String
 
-  billboards Billboard[] @relation("store-billboard")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
+  billboards Billboard[] @relation("store-billboard")
+  categories Category[]  @relation("store-category")
+  sizes      Size[]      @relation("store-size")
+  colors     Color[]     @relation("store-color")
 }
 
 model Billboard {
-  id      String @id @default(uuid())
-  label String
+  id       String @id @default(uuid())
+  label    String
   imageUrl String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  storeId  String
+  store    Store      @relation("store-billboard", fields: [storeId], references: [id])
+  category Category[]
+
+  @@index([storeId])
+}
+
+model Category {
+  id   String @id @default(cuid())
+  name String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  storeId   String
+  store     Store     @relation("store-category", fields: [storeId], references: [id])
+  bbId      String
+  billboard Billboard @relation(fields: [bbId], references: [id])
+
+  @@index([storeId])
+  @@index([bbId])
+}
+
+model Size {
+  id    String @id @default(cuid())
+  name  String
+  value String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   storeId String
-  store   Store  @relation("store-billboard", fields: [storeId], references: [id])
+  store   Store  @relation("store-size", fields: [storeId], references: [id])
+
+  @@index([storeId])
+}
+
+model Color {
+  id    String @id @default(cuid())
+  name  String
+  value String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  storeId String
+  store   Store  @relation("store-color", fields: [storeId], references: [id])
+
   @@index([storeId])
 }
