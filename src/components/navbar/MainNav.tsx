@@ -38,6 +38,11 @@ const MainNav = ({
       active: path === `/${params.storeId}/colors`,
     },
     {
+      href: `/${params.storeId}/products`,
+      label: 'Products',
+      active: path === `/${params.storeId}/products`,
+    },
+    {
       href: `/${params.storeId}/settings`,
       label: 'Settings',
       active: path === `/${params.storeId}/settings`,
