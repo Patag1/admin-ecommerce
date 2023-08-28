@@ -15,23 +15,18 @@ interface DashboardPageProps {
 
 const DashboardPage: FC<DashboardPageProps> = async ({ params }) => {
   const { storeId } = params
-  console.log('ERROR 4')
 
   const totalRevenue = await getTotalRevenue(storeId)
-  console.log('ERROR 5')
 
   const salesCount = await db.order.count({
     where: { storeId, isPaid: true },
   })
-  console.log('ERROR 6')
 
   const stockCount = await db.product.count({
     where: { storeId, isArchived: false },
   })
-  console.log('ERROR 7')
 
   const graphRevenue = await getGraphRevenue(storeId)
-  console.log('ERROR 8')
 
   return (
     <div className="flex-col">
