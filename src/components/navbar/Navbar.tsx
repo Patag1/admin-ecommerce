@@ -4,6 +4,7 @@ import { UserButton, auth } from '@clerk/nextjs'
 import StoreSwitcher from './StoreSwitcher'
 import { redirect } from 'next/navigation'
 import { db } from '@/lib/db'
+import { ThemeToggle } from '../ui/theme-toggle'
 
 interface NavbarProps {}
 
@@ -24,6 +25,7 @@ const Navbar: FC<NavbarProps> = async ({}) => {
         <StoreSwitcher items={stores} />
         <MainNav className="mx-6" />
         <div className="ml-auto flex items-center space-x-4">
+          <ThemeToggle />
           <UserButton afterSignOutUrl="/" />
         </div>
       </div>
