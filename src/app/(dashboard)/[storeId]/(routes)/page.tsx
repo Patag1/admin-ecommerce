@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import { db } from '@/lib/db'
 import Header from '@/components/ui/header'
 import { Separator } from '@/components/ui/separator'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -26,10 +25,10 @@ const DashboardPage: FC<DashboardPageProps> = async ({ params }) => {
 
   return (
     <div className="flex-col">
-      <div className="p-8 pt-6 flex-1 space-x-4">
+      <div className="p-8 pt-6 flex-1 space-y-4">
         <Header title="Dashboard" desc="Overview of your store" />
         <Separator />
-        <div className="grid grid-cols-3 gap-4">
+        <div className="pt-4 grid grid-cols-3 gap-4">
           <Card>
             <CardHeader className="pb-2 flex flex-row justify-between items-center space-y-0">
               <CardTitle className="text-sm font-medium">
@@ -74,7 +73,7 @@ const DashboardPage: FC<DashboardPageProps> = async ({ params }) => {
           <CardHeader>
             <CardTitle>Overview</CardTitle>
           </CardHeader>
-          <CardContent className='pl-2'>
+          <CardContent className='pl-0'>
             <Overview data={graphRevenue} />
           </CardContent>
         </Card>

@@ -10,5 +10,5 @@ export default function SetupPage() {
     !isOpen && onOpen()
   }, [isOpen, onOpen])
   
-  return <main className="p-4"></main>
+  return null
 }
