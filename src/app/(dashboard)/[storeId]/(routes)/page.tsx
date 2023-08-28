@@ -2,13 +2,12 @@ import { FC } from 'react'
 import Header from '@/components/ui/header'
 import { Separator } from '@/components/ui/separator'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { CreditCard, DollarSign } from 'lucide-react'
+import { CreditCard, DollarSign, Package } from 'lucide-react'
 import { priceFormatter } from '@/lib/utils'
 import { getTotalRevenue } from '@/actions/get-total-revenue'
-import { getSalesCount } from '@/actions/get-sales-count'
-import { getStockCount } from '@/actions/get-stock-count copy'
 import Overview from '@/components/ui/overview'
 import { getGraphRevenue } from '@/actions/get-graph-revenue'
+import { db } from '@/lib/db'
 
 interface DashboardPageProps {
   params: { storeId: string }
@@ -18,8 +17,14 @@ const DashboardPage: FC<DashboardPageProps> = async ({ params }) => {
   const { storeId } = params
 
   const totalRevenue = await getTotalRevenue(storeId)
-  const salesCount = await getSalesCount(storeId)
-  const stockCount = await getStockCount(storeId)
+
+  const salesCount = await db.order.count({
+    where: { storeId, isPaid: true },
+  })
+  
+  const stockCount = await db.product.count({
+    where: { storeId, isArchived: false },
+  })
 
   const graphRevenue = await getGraphRevenue(storeId)
 
@@ -60,7 +65,7 @@ const DashboardPage: FC<DashboardPageProps> = async ({ params }) => {
               <CardTitle className="text-sm font-medium">
                 Products in stock
               </CardTitle>
-              <CreditCard className="w-4 h-4 text-muted-foreground" />
+              <Package className="w-4 h-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
