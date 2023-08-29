@@ -6,7 +6,6 @@ The Ecommerce Admin Dashboard project is a comprehensive solution designed to pr
 ## Features
 1. Product Management
 Efficiently manage your product catalog with features like:
-
 Create stores. Add, edit, and delete billboards, categories, sizes, colors and products.
 Categorize products for easy navigation.
 Upload product multiple images and descriptions.
@@ -15,20 +14,17 @@ Set product category, size, color and price.
 
 2. Order Tracking
 Keep track of customer orders and ensure smooth order processing:
-
 View and manage incoming orders.
 Monitor order status (pending and paid).
 Real time data updated and displayed to dashboard based on orders.
 
 3. Sales Analytics
 Make informed business decisions by analyzing sales data:
-
 Generate visual reports on montly sales trends.
 Identify peak sales periods.
 
 5. User Access Control
 Ensure data security and restrict access as needed:
-
 Control who can perform specific actions.
 Secure sensitive data from unauthorized access.
 
