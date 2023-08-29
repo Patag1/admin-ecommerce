@@ -1,7 +1,7 @@
 ## Ecommerce Admin Dashboard
 The Ecommerce Admin Dashboard project is a comprehensive solution designed to provide an efficient and user-friendly interface for managing various aspects of an online store. This dashboard empowers administrators with the tools necessary to oversee and control the day-to-day operations of their ecommerce platform. From managing products and orders to analyzing sales trends, this dashboard aims to streamline the management process.
 
-[Dashboard Preview](https://i.imgur.com/KmR9MWD.png)
+[Dashboard](https://i.imgur.com/KmR9MWD.png)
 
 ## Features
 1. Product Management
@@ -33,7 +33,7 @@ Control who can perform specific actions.
 Secure sensitive data from unauthorized access.
 
 ## Installation
-1. Clone this repository: git clone https://github.com/yourusername/ecommerce-admin-dashboard.git
+1. Clone this repository: git clone [https://github.com/yourusername/ecommerce-admin-dashboard.git](https://github.com/Patag1/admin-ecommerce.git)
 2. Navigate to the project directory: cd ecommerce-admin-dashboard
 3. Install dependencies: npm install
 4. Populate necessary environment variables: Prisma's, Clerks' (6), Cloudinary's, Stripes' (2), public e-commerce URL
