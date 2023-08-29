@@ -37,7 +37,29 @@ Secure sensitive data from unauthorized access.
 2. Navigate to the project directory: cd ecommerce-admin-dashboard
 3. Install dependencies: npm install
 4. Populate necessary environment variables: Prisma's, Clerks' (6), Cloudinary's, Stripes' (2), public e-commerce URL
-5. Start the development server: npm run dev
+```
+# Prisma - Planet Scale
+DATABASE_URL=
+
+# Clerk
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+
+# Cloudinary
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
+
+# Stripe
+STRIPE_API_KEY=
+STRIPE_WEBHOOK_SECRET=
+
+# Public E-commerce
+PUBLIC_ECOMM_URL=http://localhost:3001
+```
+6. Start the development server: npm run dev
 
 ## Technologies Used
 General language: Typescript
