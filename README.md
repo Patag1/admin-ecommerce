@@ -53,7 +53,7 @@ STRIPE_API_KEY=
 STRIPE_WEBHOOK_SECRET=
 
 # Public E-commerce
-PUBLIC_ECOMM_URL=http://localhost:3001
+FRONTEND_STORE_URL=http://localhost:3001
 ```
 6. Start the development server: npm run dev
 
@@ -67,7 +67,6 @@ PUBLIC_ECOMM_URL=http://localhost:3001
 
 ## Contributing
 Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
-
 1. Fork the repository
 2. Create a new branch for your feature: git checkout -b feature-name
 3. Commit your changes: git commit -m "Add feature"
