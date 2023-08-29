@@ -62,17 +62,12 @@ PUBLIC_ECOMM_URL=http://localhost:3001
 6. Start the development server: npm run dev
 
 ## Technologies Used
-General language: Typescript
-
-Frontend: Tailwind CSS, React.js, Zod, Zustand, Next.js
-
-Backend: Prisma, Node.js, Next.js
-
-Database: Planet Scale (MySQL)
-
-Authentication: Clerk
-
-Charts, graphs and other UI: Shadcn UI, Recharts
+- General language: Typescript
+- Frontend: Tailwind CSS, React.js, Zod, Zustand, Next.js
+- Backend: Prisma, Node.js, Next.js
+- Database: Planet Scale (MySQL)
+- Authentication: Clerk
+- Charts, graphs and other UI: Shadcn UI, Recharts
 
 ## Contributing
 Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
