@@ -34,7 +34,7 @@ Secure sensitive data from unauthorized access.
 3. Install dependencies: npm install
 4. Populate necessary environment variables: Prisma's, Clerks' (6), Cloudinary's, Stripes' (2), public e-commerce URL
 ```js
-# Prisma - Planet Scale
+# Prisma - Planet Scale originally, now Supabase
 DATABASE_URL=
 
 # Clerk
@@ -61,7 +61,7 @@ FRONTEND_STORE_URL=http://localhost:3001
 - General language: Typescript
 - Frontend: Tailwind CSS, React.js, Zod, Zustand, Next.js
 - Backend: Prisma, Node.js, Next.js
-- Database: Planet Scale (MySQL)
+- Database: Planet Scale (MySQL) originally, now Supabase (PostgreSQL)
 - Authentication: Clerk
 - Charts, graphs and other UI: Shadcn UI, Recharts
 
